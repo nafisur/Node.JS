@@ -1,0 +1,38 @@
+
+<head>
+    <script>
+        function searchEmployee(emp){
+            
+            window.location.href('/employees?name='+emp)
+        }
+        </script>
+</head>
+
+<div>
+    <h1 align = "Center">
+        Dashboard
+    </h1>
+    <div><a href="/addEmployee"> Add Employee</a></div>
+    <table align="Center" border="1">
+        <div align="Center" style="background-color: burlywood;"> Search by Name
+        <input type="text" id="empname"
+        onblur="searchEmployee(this.value)"
+        </div>
+        <tr>
+            <th>Employee Id</th>
+            <th>Employee Name</th>
+            <th>Employee Age </th>
+            <th>Employee Job</th>
+
+            
+        </tr>
+            <% data.forEach(function(emp){%>
+                <tr>
+                <td><%=emp.emp_id%></td>
+                <td><%=emp.e_name%></td>
+                <td><%=emp.emp_age%></td>
+                <td><%=emp.emp_job%></td>
+            </tr>
+            <%})%>
+    </table>
+</div>

@@ -1,6 +1,7 @@
 var mysql = require('mysql');
 const express = require('express')
 var app = express()
+app.set('view engine','ejs')
 const bodyParser = require('body-parser')
 app.use(bodyParser.json())
 
@@ -26,8 +27,8 @@ app.get('/employees', (req, res)=>{
     var sql_query = 'select * from employee'
     connection.query(sql_query,(err,rows, fields)=>{
         if (!err) {
-            res.send(rows)
-            connection.end()
+            res.render('employee-dashboard',{data:rows})
+            //connection.end()
         }
         else{
             console.log(err)
